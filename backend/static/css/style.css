@@ -7,6 +7,15 @@ pre {
   max-width: 100%;
 }
 
+code{
+  white-space: pre-wrap;
+  word-break: keep-all;
+}
+
+p{
+  hyphens: auto;
+}
+
 @media (max-width: 600px){
   pre, code {
     font-size: 14px;
