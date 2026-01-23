@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+        <!-- Basic -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- SEO -->
+        <title>{% block title %} Delcio — Portfolio {% endblock %}</title>
+        <meta
+            name="description"
+            content="Minimal portfolio focused on engineering, systems and clean interfaces."
+        />
+
+        <!-- Prism CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
+
+        <!-- Prism JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-javascript.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-c.min.js"></script>
+
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Tailwind CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <!-- Tailwind Theme Config -->
+        <script>
+            tailwind.config = {
+            theme: {
+                extend: {
+                colors: {
+                    bg: "#FAFAFA",
+                    surface: "#FFFFFF",
+                    border: "#E5E5E5",
+                    text: {
+                    primary: "#1A1A1A",
+                    muted: "#666666",
+                    },
+                },
+                fontFamily: {
+                    display: ["Space Grotesk", "sans-serif"],
+                    body: ["Inter", "sans-serif"],
+                    mono: ["JetBrains Mono", "monospace"],
+                },
+                maxWidth: {
+                    container: "896px",
+                },
+                borderRadius: {
+                    sm: "4px",
+                    md: "8px",
+                },
+                spacing: {
+                    section: "64px",
+                },
+                backdropBlur: {
+                    glass: "12px",
+                },
+                },
+            },
+            };
+        </script>
+
+        <script src="https://unpkg.com/htmx.org@1.9.3"></script>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+    </head>
+
+    <body>
+        <header class="sticky top-0 z-50 bg-bg/80 backdrop-blur-glass border-b border-border">
+            <nav class="h-16 px-6 md:px-18 max-w-container mx-auto flex items-center justify-between">
+                <span class="font-display font-bold text-lg text-base sm:text-xl md:text-2xl">
+                    <a href="/" class="cursor-pointer opacity-80  hover:opacity-100 hover:text-black transition duration-300 active:scale-95 active:text-text-muted">
+                        Logz.
+                    </a>
+                </span>
+
+                <div class="flex gap-4 text-xs md:text-base">
+
+                <a href="#portfolio" class="cursor-pointer opacity-80 text-[13px] hover:opacity-100 hover:text-black transition duration-300 active:scale-95 active:text-text-muted">Portfolio</a>
+
+                <a href="{{url_for('get_posts')}}" class="cursor-pointer opacity-80 text-[13px]  hover:opacity-100 hover:text-black transition duration-300 active:scale-95 active:text-text-muted">Diario</a>
+
+                <a href="#" class="cursor-pointer opacity-80 text-[13px]  hover:opacity-100 hover:text-black transition duration-300 active:scale-95 active:text-text-muted">Sobre</a>
+                </div>
+            </nav>
+            <hr >
+        </header>
+
+            {% block main %}
+            
+            {% endblock %}
+
+        <footer class="bg-bg border-t border-border mt-16">
+            
+                <div class="max-w-container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between gap-8">
+
+                    <!-- Sobre / Bio curta -->
+                    <div class="flex flex-col gap-2 max-w-sm">
+                    <h4 class="font-display font-bold text-lg text-text-primary">Délcio L. Rofino</h4>
+                    <p class="text-text-muted text-sm md:text-base">
+                        Engenheiro Eletrônico e de Telecomunicações, apaixonado por sistemas, processadores de uso específico, Assembly e desenvolvimento backend.
+                    </p>
+                    </div>
+
+                    <!-- Links rápidos -->
+                    <div class="flex flex-col gap-2">
+                    <h4 class="font-display font-bold text-sm md:text-lg text-text-primary">Links Rápidos</h4>
+                    <div class="flex flex-col gap-1 text-text-muted text-sm">
+                        <a href="#portfolio" class="hover:text-text-primary transition">Portfolio</a>
+                        <a href="#diario" class="hover:text-text-primary transition">Diário</a>
+                        <a href="#sobre" class="hover:text-text-primary transition">Sobre</a>
+                    </div>
+                    </div>
+
+                    <!-- Redes sociais -->
+                    <div class="flex flex-col gap-2">
+                    <h4 class="font-display font-bold text-sm md:text-lg text-text-primary">Redes</h4>
+                    <div class="flex gap-4 text-text-muted">
+                        <a href="https://www.linkedin.com/in/seu-usuario" target="_blank" class="hover:text-text-primary transition">🔗 LinkedIn</a>
+                        <a href="https://github.com/seu-usuario" target="_blank" class="hover:text-text-primary transition">🐙 GitHub</a>
+                        <a href="mailto:seu-email@example.com" class="hover:text-text-primary transition">✉️ Email</a>
+                    </div>
+                    </div>
+
+                </div>
+
+                <!-- Créditos / Copyright -->
+                <div class="border-t border-border mt-8">
+                    <p class="max-w-container mx-auto px-6 py-4 text-center text-text-muted text-xs md:text-sm">
+                    © 2026 Délcio L. Rofino. Todos os direitos reservados.
+                    </p>
+                </div>
+        </footer>
+    </body>
+        
+</html> 

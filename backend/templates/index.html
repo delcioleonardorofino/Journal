@@ -1,0 +1,404 @@
+
+{% extends "base.html" %}
+
+{%block main%}
+        <main
+        class="
+            max-w-container
+            mx-auto
+            px-4
+            md:px-18 py-6
+            md:py-section
+            flex
+            flex-col
+            gap-6
+            md:gap-[32px]
+        ">
+
+            <!-- Hero Section  -->
+            <section class="max-w-container mx-auto flex flex-col md:flex-row gap-12 py-10 px-6" id="hero">
+
+            <!-- Texto -->
+            <div class="flex flex-col gap-6 flex-1">
+
+                    <h3 class="font-display font-mono text-sm md:text-lg text-text-muted">
+                    Engenheiro Eletrônico & Builder
+                    </h3>
+
+                    <h1 class="font-display text-2xl font-bold  font-mono md:text-4xl">
+                    Délcio L. Rofino
+                    </h1>
+
+                    <p class="text-text-muted text-sm md:text-lg max-w-xl leading-relaxed">
+                    Engenheiro Eletrônico e de Telecomunicações, com atuação em sistemas de telecom
+                    e interesse especial no desenvolvimento de processadores de uso específico,
+                    linguagens Assembly e compiladores.
+                    </p>
+
+                    <h3 class="font-display text-text-muted text-sm md:text-base">
+                    Veja meu:
+                    </h3>
+
+                    <!-- CTA principal -->
+                    <a
+                    href="{{url_for('get_posts')}}"
+                    class="inline-flex items-center justify-center gap-2 max-w-[320px]
+                            bg-black text-white px-6 py-3 rounded-md font-mono text-sm
+                            shadow-sm hover:shadow-lg transition
+                            active:scale-95 cursor-pointer"
+                    >
+                    <span>📘</span>
+                    <span>Diário de Engenharia</span>
+                    </a>
+
+                    <!-- Links sociais -->
+                    <div class="flex flex-wrap gap-4 pt-4">
+
+                    <a
+                        href="https://www.linkedin.com/in/seu-usuario"
+                        target="_blank"
+                        class="flex items-center gap-2 px-4 py-2 border border-border rounded-md
+                            text-text-muted font-mono text-sm shadow-sm
+                            hover:text-text-primary hover:shadow-lg transition
+                            active:scale-95 cursor-pointer"
+                    >
+                        🔗 LinkedIn
+                    </a>
+
+                    <a
+                        href="https://github.com/seu-usuario"
+                        target="_blank"
+                        class="flex items-center gap-2 px-4 py-2 border border-border rounded-md
+                            text-text-muted font-mono text-sm shadow-sm
+                            hover:text-text-primary hover:shadow-lg transition
+                            active:scale-95 cursor-pointer"
+                    >
+                        🐙 GitHub
+                    </a>
+
+                    <a
+                        href="mailto:seu-email@example.com"
+                        class="flex items-center gap-2 px-4 py-2 border border-border rounded-md
+                            text-text-muted font-mono text-sm shadow-sm
+                            hover:text-text-primary hover:shadow-lg transition
+                        active:scale-95 cursor-pointer"
+                    >
+                        ✉️ Email
+                    </a>
+
+                    <a
+                        href="resume.pdf"
+                        target="_blank"
+                        class="flex items-center gap-2 px-4 py-2 border border-border rounded-md
+                            text-text-muted font-mono text-sm shadow-sm
+                            hover:text-text-primary hover:shadow-lg transition
+                            active:scale-95 cursor-pointer"
+                    >
+                        📄 CV
+                    </a>
+
+                    </div>
+                </div>
+
+                <!-- Imagem -->
+                <div class="flex-1 max-w-md md:flex flex-col items-center justify-center">
+                    <img
+                    src="static/assets/132489(1).png"
+                    alt="Programming illustration"
+                    class="max-w-full h-auto border rounded-md" 
+                    />
+                    <p class="font-mono my-2 text-sm text-text-muted">Uma imagem que busca representar meu rosto.</p>
+                </div>
+
+            </section>
+
+
+            <!-- Tech Stack Section -->
+            <section class="max-w-container flex md:py-0 flex flex-col flex-wrap md:flex-col items-start gap-4 md:gap-6 mb-8 md:mb-4">
+                
+                <hr class="w-full border-t border-border" >
+                <h4 class="font-display font-bold  md: text-text-primary">
+                    Tech Stack
+                </h4>
+                
+
+                <!-- Tags Container -->
+                <div class="max-w-container md:py-4 md:flex flex-col gap-4">
+
+                    <!-- Título -->
+                    <p class="font-thin py-2">Linguagens</p>
+
+                    <!-- Tags -->
+                    <div class="flex flex-wrap py-2 gap-2 md:gap-3">
+
+                        <span class="bg-[#F0F0F0] flex items-center gap-2 px-3 py-1 rounded-md text-text-primary font-mono text-sm hover:bg-text-primary hover:text-surface transition">ASSEMBLY</span>
+
+                        <span class="bg-[#F0F0F0] flex items-center gap-2 px-3 py-1 rounded-md text-text-primary font-mono text-sm hover:bg-text-primary hover:text-surface transition">C</span>
+
+                        <span class="bg-[#F0F0F0] flex items-center gap-2 px-3 py-1 rounded-md text-text-primary font-mono text-sm hover:bg-text-primary hover:text-surface transition">JAVA</span>
+
+                        <span class="bg-[#F0F0F0] flex items-center gap-2 px-3 py-1 rounded-md text-text-primary font-mono text-sm hover:bg-text-primary hover:text-surface transition">JAVASCRIPT</span>
+
+                        <span class="bg-[#F0F0F0] flex items-center gap-2 px-3 py-1 rounded-md text-text-primary font-mono text-sm hover:bg-text-primary hover:text-surface transition">PYTHON</span>
+
+                        <span class="bg-[#F0F0F0] flex items-center gap-2 px-3 py-1 rounded-md text-text-primary font-mono text-sm hover:bg-text-primary hover:text-surface transition">MATLAB</span>
+                    </div>
+
+
+                    <!-- Título -->
+                    <p class="font-thin py-2">Frameworks/Bibliotecas</p>
+
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-2 py-2 md:gap-3">
+
+                        <span class="bg-[#F0F0F0] flex items-center gap-2 px-3 py-1 rounded-md text-text-primary font-mono text-sm hover:bg-text-primary hover:text-surface transition">DJANGO</span>
+
+                        <span class="bg-[#F0F0F0] flex items-center gap-2 px-3 py-1 rounded-md text-text-primary font-mono text-sm hover:bg-text-primary hover:text-surface transition">EXPRESS</span>
+
+                        <span class="bg-[#F0F0F0] flex items-center gap-2 px-3 py-1 rounded-md text-text-primary font-mono text-sm hover:bg-text-primary hover:text-surface transition">FASTAPI</span>
+
+                        <span class="bg-[#F0F0F0] flex items-center gap-2 px-3 py-1 rounded-md text-text-primary font-mono text-sm hover:bg-text-primary hover:text-surface transition">FLASK</span>
+
+                        <span class="bg-[#F0F0F0] flex items-center gap-2 px-3 py-1 rounded-md text-text-primary font-mono text-sm hover:bg-text-primary hover:text-surface transition">REACT</span>
+
+                        <span class="bg-[#F0F0F0] flex items-center gap-2 px-3 py-1 rounded-md text-text-primary font-mono text-sm hover:bg-text-primary hover:text-surface transition">TAILWIND CSS</span>
+
+                    </div>
+
+
+                    <!-- Título -->
+                    <p class="font-thin py-2">Bases de Dados</p>
+
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-2 py-2 md:gap-3">
+
+                        <span class="bg-[#F0F0F0] flex items-center gap-2 px-3 py-1 rounded-md text-text-primary font-mono text-sm hover:bg-text-primary hover:text-surface transition">MONGO DB</span>
+
+                        <span class="bg-[#F0F0F0] flex items-center gap-2 px-3 py-1 rounded-md text-text-primary font-mono text-sm hover:bg-text-primary hover:text-surface transition">MYSQL</span>
+
+                        <span class="bg-[#F0F0F0] flex items-center gap-2 px-3 py-1 rounded-md text-text-primary font-mono text-sm hover:bg-text-primary hover:text-surface transition">POSTGRESQL</span>
+
+                        <span class="bg-[#F0F0F0] flex items-center gap-2 px-3 py-1 rounded-md text-text-primary font-mono text-sm hover:bg-text-primary hover:text-surface transition">SQLITE</span>
+                </div>
+
+            </section>
+
+            
+            <!-- Projectos -->
+            <section class="max-w-container flex md:py-12 flex flex-col flex-wrap md:flex-row md:justify-between items-start gap-4 md:gap-6" id="portfolio">
+
+                <h2 class="font-display font-bold text-2xl md:text-3xl text-text-primary">
+                    Projectos
+                </h2>
+                <hr class="w-full border-t border-border" >
+
+                <article
+                    class="
+                        cursor-pointer
+                        border border-border
+                        shadow-md
+                        rounded-md
+                        w-full
+                        p-8
+                        gap-1
+                        mt-8
+                        md:w-[48%]
+                        md:p-6
+                        md:gap-2
+                        hover:shadow-lg
+                        transition
+                        active:scale-95
+                        active:text-text-muted
+                        hover:border-text-muted
+                    ">
+
+                    <h3 class="font-display font-medium text-lg mb-2">
+                        API de Tributacao em Redes Moveis
+                    </h3>
+
+                    <p class="text-text-muted text-sm line-clamp-3 md:text-md mb-4 leading-relaxed">
+                        Desenvolvi um sistema backend para processamento e cálculo de tarifas de redes móveis, capaz de registrar chamadas, dados de internet e SMS, aplicando regras de cobrança complexas de forma automatizada e escalável. O sistema suporta múltiplos planos de tarifação, promoções, e gera relatórios detalhados para análise de consumo e faturamento.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-[#F0F0F0] text-xs font-mono px-2 py-1 rounded-sm">
+                        #Tailwind
+                        </span>
+                        <span class="bg-[#F0F0F0] text-xs font-mono px-2 py-1 rounded-sm">
+                        #UI
+                        </span>
+                    </div>
+                </article>
+
+                <article
+                    class="
+                        cursor-pointer
+                        border border-border
+                        shadow-md
+                        rounded-md
+                        w-full
+                        p-8
+                        mt-8
+                        md:w-[48%]
+                        md:gap-2
+                        md:p-6
+                        hover:shadow-lg
+                        transition
+                        active:scale-95
+                        active:text-text-muted
+                        hover:border-text-muted
+                    ">
+
+                    <h3 class="font-display font-medium text-lg mb-2">
+                        Nome do Projeto
+                    </h3>
+
+                    <p class="text-text-muted text-sm line-clamp-3 md:text-md mb-4 leading-relaxed">
+                        Desenvolvi um sistema backend para processamento e cálculo de tarifas de redes móveis, capaz de registrar chamadas, dados de internet e SMS, aplicando regras de cobrança complexas de forma automatizada e escalável. O sistema suporta múltiplos planos de tarifação, promoções, e gera relatórios detalhados para análise de consumo e faturamento.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-[#F0F0F0] text-xs font-mono px-2 py-1 rounded-sm">
+                        #Tailwind
+                        </span>
+                        <span class="bg-[#F0F0F0] text-xs font-mono px-2 py-1 rounded-sm">
+                        #UI
+                        </span>
+                    </div>
+                </article>
+
+                <article
+                    class="
+                        cursor-pointer
+                        border border-border
+                        shadow-md
+                        rounded-md
+                        w-full
+                        p-8
+                        mt-8
+                        md:w-[48%]
+                        md:gap-2
+                        md:p-6
+                        transition
+                        hover:shadow-lg
+                        active:scale-95
+                        active:text-text-muted
+                        hover:border-text-muted
+                    ">
+
+                    <h3 class="font-display font-medium text-lg mb-2">
+                        CPU para processamento de logs em Redes Moveis
+                    </h3>
+
+                    <p class="text-text-muted text-sm line-clamp-3 md:text-md mb-4 leading-relaxed">
+                        Desenvolvi um sistema backend para processamento e cálculo de tarifas de redes móveis, capaz de registrar chamadas, dados de internet e SMS, aplicando regras de cobrança complexas de forma automatizada e escalável. O sistema suporta múltiplos planos de tarifação, promoções, e gera relatórios detalhados para análise de consumo e faturamento.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-[#F0F0F0] text-xs font-mono px-2 py-1 rounded-sm">
+                        #Tailwind
+                        </span>
+                        <span class="bg-[#F0F0F0] text-xs font-mono px-2 py-1 rounded-sm">
+                        #UI
+                        </span>
+                    </div>
+                </article>
+            </section>
+                
+            <!-- Experiencia Profissional -->
+            <section class="max-w-container items-start py-16 flex flex-col gap-12 line-clamp-4">
+
+                <!-- Título da seção -->
+                <div class="flex flex-col gap-2">
+                    <h2 class="font-display font-bold text-2xl md:text-3xl text-text-primary">
+                    Experiência Profissional
+                    </h2>
+                    <hr class="w-full border-t border-border" >
+                    <p class="text-text-muted text-sm md:text-base max-w-xl ">
+                    Minha atuação em telecomunicações, sistemas e desenvolvimento de soluções técnicas,
+                    com foco em engenharia e baixo nível.
+                    </p>
+                </div>
+
+                <!-- Timeline Container -->
+                <div class="relative flex flex-col gap-12">
+
+                    <!-- Linha vertical da timeline -->
+                    <div class="absolute left-5 top-0 bottom-0 w-[2px] bg-border"></div>
+
+                    <!-- Item 1 -->
+                    <div class="flex flex-col md:flex-row gap-4 relative pl-12 md:pl-16">
+
+                    <!-- Ponto da timeline -->
+                    <div class="absolute left-0 top-2 md:top-4 w-4 h-4 bg-text-primary rounded-full border-2 border-white shadow-md"></div>
+
+                    <!-- Card de conteúdo -->
+                    <div class="bg-surface p-4 md:p-6 rounded-md shadow-sm hover:shadow-lg transition">
+                        <h3 class="font-display font-medium text-lg md:text-xl mb-2">
+                        Desenvolvedor Fullstack (Foco em Backend) 
+                        </h3>
+                        <span class="font-mono text-xs md:text-sm text-text-muted mt-2 ">
+                        Telecomunicações • Sistemas • Backend Técnico
+                        </span>
+                        <p class="text-text-muted text-sm line-clamp-3 md:text-md mt-4 leading-relaxed">
+                        Atuação em desenvolvimento Fullstack, com foco em backend, para sistemas de telecomunicações. 
+                        Experiência em modelagem de redes móveis, processamento de sinais e automação de processos técnicos. 
+                        Desenvolvimento de soluções backend robustas para análise de dados e suporte operacional.
+                        </p>
+                    </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="flex flex-col md:flex-row gap-4 relative pl-12 md:pl-16">
+
+                    <!-- Ponto da timeline -->
+                    <div class="absolute left-0 top-2 md:top-4 w-4 h-4 bg-text-primary rounded-full border-2 border-white shadow-md"></div>
+
+                    <!-- Card de conteúdo -->
+                    <div class="bg-surface p-4 md:p-6 rounded-md shadow-sm hover:shadow-lg transition">
+                        <h3 class="font-display font-medium text-lg md:text-xl mb-2">
+                        Pesquisa e Desenvolvimento em Sistemas de Baixo Nível
+                        </h3>
+                        <span class="font-mono text-xs md:text-sm text-text-muted">
+                        Processadores • Assembly • Compiladores
+                        </span>
+                        <p class="text-text-muted text-sm line-clamp-3 md:text-md mt-4 leading-relaxed">
+                        Desenvolvimento e estudo de arquiteturas de processadores de uso específico,
+                        programação em Assembly e fundamentos de compiladores. Interesse contínuo em sistemas de baixo nível e eficiência computacional.
+                        </p>
+                    </div>
+                    </div>
+
+                    <!-- Item 3 (opcional) -->
+                    <div class="flex flex-col md:flex-row gap-4 relative pl-12 md:pl-16">
+
+                    <!-- Ponto da timeline -->
+                    <div class="absolute left-0 top-2 md:top-4 w-4 h-4 bg-text-primary rounded-full border-2 border-white shadow-md"></div>
+
+                    <!-- Card de conteúdo -->
+                    <div class="bg-surface p-4 md:p-6 rounded-md shadow-sm hover:shadow-lg transition">
+                        <h3 class="font-display font-medium text-lg md:text-xl mb-2">
+                        Projetos e Estudos Técnicos
+                        </h3>
+                        <span class="font-mono text-xs md:text-sm text-text-muted">
+                        Hardware • Compiladores • Desenvolvimento Embedded
+                        </span>
+                        <p class="text-text-muted text-sm md:text-base leading-relaxed mt-4">
+                        Desenvolvimento de projetos pessoais de microcontroladores e sistemas embarcados,
+                        incluindo design de processadores customizados, implementação de compiladores e ferramentas de baixo nível.
+                        </p>
+                    </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+{%endblock%}
+
+       
+    
+   
+
+
+
