@@ -1,5 +1,5 @@
 ---
-id: 1
+id: 2
 title: Introdução ao HTMX
 date: 13 de Dezembro de 2025
 description: Aprenda os conceitos básicos do HTMX e como ele permite criar interações dinâmicas em suas páginas HTML sem precisar de JavaScript pesado. Ideal para simplificar a atualização de conteúdo, carregamento de partes de página e navegação assíncrona.
