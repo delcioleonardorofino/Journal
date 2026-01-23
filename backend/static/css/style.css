@@ -9,6 +9,9 @@ pre {
 }
 
 code{
+  border-radius: 6px;
+  padding: 2px 6px;
+  background-color: #fafafa;
   white-space: pre-wrap;
   word-break: keep-all;
 }
