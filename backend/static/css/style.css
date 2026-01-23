@@ -1,4 +1,5 @@
 
+
 pre {
   overflow-x: auto;
   white-space: pre;
@@ -12,8 +13,8 @@ code{
   word-break: keep-all;
 }
 
-p{
-  hyphens: auto;
+.post{
+  hyphens: auto !important;
 }
 
 @media (max-width: 600px){
