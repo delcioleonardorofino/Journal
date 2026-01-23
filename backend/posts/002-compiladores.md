@@ -1,5 +1,5 @@
 ---
-id: 3
+id: 2
 title: Compiladores - como o teu código vira coisa que a máquina entende
 date: 23 de Janeiro de 2026
 description: Descobre como os compiladores transformam teu código em instruções que o computador consegue seguir e por que eles são tão exigentes.

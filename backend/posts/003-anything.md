@@ -1,5 +1,5 @@
 ---
-id: 2
+id: 3
 title: Desenvolvimento vs Produção - os bugs que te pegam desprevenido
 date: 18 de Janeiro de 2026
 description: Entenda por que o que funciona na sua máquina de desenvolvimento nem sempre funciona em produção e por que os bugs aparecem nos piores momentos.

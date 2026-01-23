@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block main %}
+<main class="max-w-container mx-auto px-8 md:px-18 py-16 flex flex-col items-center gap-12 text-center">
+
+  <!-- Número 404 -->
+  <h1 class="font-display font-bold text-6xl md:text-8xl text-text-muted">
+    404
+  </h1>
+
+  <!-- Mensagem divertida -->
+  <h2 class="font-display font-bold text-2xl md:text-4xl text-text-primary">
+    Ops! Parece que este post fugiu 😅
+  </h2>
+
+  <p class="text-text-muted text-base font-mono md:text-lg max-w-md">
+    A página que você procura não existe… ou talvez ela esteja quebrada.  
+    Não se preocupe, ainda há muita engenharia para explorar!
+  </p>
+
+  <!-- Call to Action -->
+  <div class="flex flex-col md:flex-row gap-4">
+
+    <!-- Voltar para Home -->
+    <a href="/"
+       class="flex justify-center items-center gap-2 px-6 py-3 rounded-md bg-black text-white font-mono text-sm shadow-sm hover:shadow-lg transition hover:bg-text-primary hover:text-surface active:scale-95">
+      🏠 Voltar para Home
+    </a>
+
+    <!-- Ir para Journal -->
+    <a href="/posts"
+       class="flex justify-center items-center gap-2 px-6 py-3 rounded-md border border-border text-text-muted font-mono text-sm shadow-sm hover:shadow-lg transition hover:bg-text-primary hover:text-surface active:scale-95">
+      📖 Explorar Journal
+    </a>
+
+  </div>
+
+  <!-- Ilustração divertida -->
+  <img src="/static/assets/undraw_page_not_found_re_e9o6.png"
+       alt="Página não encontrada"
+       class="w-full max-w-lg mt-12 grayscale transition hover:grayscale-0"/>
+
+</main>
+{% endblock %}

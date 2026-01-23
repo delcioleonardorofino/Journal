@@ -3,6 +3,9 @@ from .utils import load_posts, all_posts
 
 app = Flask(__name__)
 
+@app.errorhandler(404)
+def error(e):
+    return render_template('erro-404.html'), 404
 
 @app.get('/')
 def home():
@@ -12,6 +15,8 @@ def home():
 def get_posts():
     return render_template('posts.html', posts=all_posts)
 
+
+
 @app.get('/posts/<int:id>')
 def get_post(id):
     
@@ -19,7 +24,7 @@ def get_post(id):
     post = load_posts(id)
 
     if post is None:
-        abort(404)
+        abort (404)
 
     if "HX-Request" in request.headers:
         return render_template('partial_post.html', posts=posts, post = post)
