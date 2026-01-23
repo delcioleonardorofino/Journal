@@ -1,7 +1,7 @@
 ---
 id: 2
 title: HTML e suas parvoices
-date: 2026-01-20
+date: 20 de Janeiro de 2026
 description: HTMX permite construir interfaces modernas sem frameworks pesados. Convenhamos que HTML e uma das coisas mais horriveis que alguem pode trabalhar com. Em 2007, ano mais felis da minha vida eu passe por algumas situacoes nada nobres sobre como lidar com a ansiedade.  
 
 tags: [html, frontend]
