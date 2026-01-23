@@ -3,7 +3,7 @@ import yaml
 import markdown
 import bleach
 
-POST_DIR = 'posts'
+POST_DIR = os.path.join(os.path.dirname(__file__), 'posts')
 
 
 def load_posts(post_id):
