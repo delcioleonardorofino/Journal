@@ -17,6 +17,17 @@
   margin: 0 !important;
 }
 
+.name {
+  font-size: 0.75rem !important;
+  margin-bottom: 0 !important;
+  line-height: 1rem !important;
+}
+
+.role{
+  font-family:"GeistMono",ui-monospace,SFMono-Regular,Roboto Mono,Menlo,Monaco,Liberation Mono,DejaVu Sans Mono,Courier New,monospace;
+}
+
+
 .post blockquote{
   margin: 1.5rem 0;
   padding: 1rem 1.5rem;
@@ -52,6 +63,10 @@ code{
   pre, code {
     font-size: 14px;
     /* padding: 10px; */
+  }
+
+  .role{
+    font-size: 12px !important;
   }
 }
 

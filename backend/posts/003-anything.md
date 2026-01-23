@@ -1,79 +1,95 @@
 ---
-id: 3
-title: HTML e suas parvoices
-date: 20 de Janeiro de 2026
-description: HTMX permite construir interfaces modernas sem frameworks pesados. Convenhamos que HTML e uma das coisas mais horriveis que alguem pode trabalhar com. Em 2007, ano mais felis da minha vida eu passe por algumas situacoes nada nobres sobre como lidar com a ansiedade.  
-
-tags: [html, frontend]
+id: 2
+title: Desenvolvimento vs Produção - os bugs que te pegam desprevenido
+date: 18 de Janeiro de 2026
+description: Entenda por que o que funciona na sua máquina de desenvolvimento nem sempre funciona em produção e por que os bugs aparecem nos piores momentos.
+tags: [desenvolvimento, produção, bugs, engenharia, software]
 ---
 
+## O paraíso do desenvolvimento
 
-<p id="introducao">HTML (HyperText Markup Language) é a linguagem fundamental da web, usada para estruturar conteúdo e dar significado semântico aos elementos de uma página. Neste post vamos explorar algumas das tags mais comuns, como organizar conteúdo e criar uma navegação interna usando links de índice.</p>
+Quando estás a programar no teu computador, tudo parece fácil.  
+O código roda, os erros aparecem claros, e tu consegues resolver rápido.  
 
+É o **ambiente de desenvolvimento**: seguro, controlado, previsível.  
+Parece que tens tudo na mão.
 
-## Tags HTML Comuns
-<p id="tags-html">Existem diversas tags em HTML. Algumas das mais utilizadas incluem:</p>
+> Tipo quando cozinhamos em casa: todos os ingredientes estão prontos, a panela é nova, e a receita está à mão. Parece que não tem como falhar.
 
-- _`<h1>`_ a _`<h6>`_ → Títulos e subtítulos, com níveis hierárquicos
-- _`<p>`_ → Parágrafos de texto
-- _`<div>`_ → Containers genéricos para agrupar conteúdo
-- _`<section>`_ → Divisão semântica de uma página
-- _`<header>`_ / _`<footer>`_ → Cabeçalho e rodapé
-- _`<article>`_ → Artigo ou bloco de conteúdo independente
+---
 
-## Listas e Estruturas
-<p id="listas">HTML permite criar listas ordenadas e não ordenadas para organizar informações:</p>
+## A ilusão
 
-```html
-<ul>
-  <li>Item de lista não ordenada 1</li>
-  <li>Item de lista não ordenada 2</li>
-</ul>
+No desenvolvimento, tens algumas vantagens:  
+- o banco de dados está no teu PC, sem ninguém a encher com dados malucos  
+- as imagens e ficheiros estão sempre no caminho certo  
+- ninguém vai clicar em botões que tu nem imaginaste  
 
-<ol>
-  <li>Primeiro item</li>
-  <li>Segundo item</li>
-</ol>
-```
+Tudo funciona como esperado. Dá até impressão que **controlas tudo**.  
 
-Também podemos aninhar listas para criar hierarquias complexas.
+Mas, bro, isso é só uma ilusão.
 
-## Links e Imagens
-Para navegar e ilustrar páginas usamos links e imagens:
+---
 
-```html
-<a href="https://example.com">Visite o Example.com</a>
-<img src="imagem.png" alt="Descrição da imagem">
-```
+## Produção é outro mundo
 
-* O atributo `href` define o destino do link  
-* `alt` descreve a imagem para acessibilidade  
+Quando o código vai pra produção, a história muda.  
+De repente:  
+- chegam dados inesperados — nomes vazios, emails com símbolos estranhos  
+- usuários clicam em botões que tu nem pensaste  
+- o servidor fica lento ou cai  
 
-## Formulários
-<p id="formularios">Formulários permitem capturar dados do usuário:</p>
+Os bugs que antes eram simples agora são difíceis de apanhar.
 
-```html
-<form action="/enviar" method="post">
-  <label for="nome">Nome:</label>
-  <input type="text" id="nome" name="nome">
-  <button type="submit">Enviar</button>
-</form>
-```
+> É como cozinhar para 100 pessoas num restaurante lotado: a panela de casa não ajuda, os ingredientes podem faltar, e alguém sempre vai pedir algo diferente.
 
-- Cada `input` deve ter `name` para enviar dados  
-- `button type="submit"` envia o formulário  
+---
 
-## Blocos de Código
-<p id="codigo">Para mostrar código em páginas, usamos:</p>
+## Por que bugs em produção são mais complicados
 
-Com Markdown, podemos usar a sintaxe de blocos de código:
+1. **Ambiente imprevisível**  
+   Em produção, vários sistemas interagem e um erro pode aparecer de forma inesperada.
 
-```javascript
-function soma(a, b):
-    return a + b
-```
+2. **Dados reais**  
+   Usuários não seguem regras: escrevem “123abc” num campo que quer só números, ou deixam campos vazios.
 
-O CSS pode estilizar esses blocos com `codehilite`.
+3. **Escala**  
+   No desenvolvimento testas com poucos registros.  
+   Em produção tens milhares de utilizadores ao mesmo tempo.
 
-## Conclusão
-HTML é simples de aprender, mas extremamente poderoso. Usando tags semânticas, listas, links internos, imagens e blocos de código, você consegue criar páginas estruturadas, navegáveis e acessíveis. Combinado com CSS e JavaScript, torna-se a base de qualquer site moderno.
+4. **Pressão**  
+   Bugs em produção custam dinheiro, stress e noites sem dormir.  
+   Em desenvolvimento, é só frustração momentânea.
+
+---
+
+## Sobrevivendo aos bugs
+
+Algumas dicas pra não te perder:  
+
+- **Regista tudo**  
+  Logs são essenciais pra saber o que aconteceu. Se não tiver logs, ficas às cegas.
+
+- **Teste, mas não confies 100%**  
+  Testes ajudam, mas não replicam o mundo real.
+
+- **Prepara teu código pra falhar**  
+  Sistemas robustos lidam melhor com erros; sistemas frágeis quebram com qualquer problema.
+
+- **Humildade**  
+  O que funciona na tua máquina não garante que funcione pra todos.
+
+> Produção ensina rápido, e às vezes de forma dura.
+> Entt, se tiveres uma cena no teu pc, faz deploy e complete o ciclo, mesmo que seja dificil.
+
+---
+
+## Resumo
+
+- Desenvolvimento é seguro, previsível, mas ilusório.  
+- Produção é imprevisível, cheia de dados reais e interações complicadas.  
+- Bugs em produção são mais difíceis porque lidam com caos real.  
+- Preparar teu código pra falhar é tão importante quanto fazê-lo funcionar.  
+
+Se lembra: **“funciona na minha máquina” ≠ “funciona de verdade”**.  
+Aprender a lidar com produção é o que faz a diferença entre um programador “kmk” e um engenheiro que sabe o que está a fazer.
