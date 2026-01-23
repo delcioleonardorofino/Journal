@@ -46,8 +46,8 @@ Para navegar e ilustrar páginas usamos links e imagens:
 <img src="imagem.png" alt="Descrição da imagem">
 ```
 
-- O atributo `href` define o destino do link  
-- `alt` descreve a imagem para acessibilidade  
+* O atributo `href` define o destino do link  
+* `alt` descreve a imagem para acessibilidade  
 
 ## Formulários
 <p id="formularios">Formulários permitem capturar dados do usuário:</p>
