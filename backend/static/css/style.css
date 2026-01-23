@@ -1,5 +1,18 @@
 
+pre {
+  overflow-x: auto;
+  white-space: pre;
+  padding: 24px;
+  word-wrap: normal;
+  max-width: 100%;
+}
 
+@media (max-width: 600px){
+  pre, code {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
 
 .codehilite{
     background-color: #fafafa !important;
