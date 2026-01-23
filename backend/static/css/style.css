@@ -38,6 +38,8 @@ pre {
 
     #container .post{
         font-size: 0.875rem !important;
+        max-width: 100%;
+        overflow: hidden;
     }
 
     #container .post p{
