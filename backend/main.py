@@ -1,5 +1,5 @@
 from flask import Flask, render_template, abort, request
-from utils import load_posts, all_posts
+from .utils import load_posts, all_posts
 
 app = Flask(__name__)
 
