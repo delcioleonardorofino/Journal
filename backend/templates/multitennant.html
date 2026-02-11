@@ -13,6 +13,76 @@
         <p class="mt-4 text-base font-body text-text-muted leading-relaxed md:text-lg">
             Acompanhe a construção do sistema de gestão escolar multi-tennant, um projeto inovador que visa transformar a administração educacional. Este sistema permite que escolas e instituições de ensino gerenciem suas operações de forma eficiente e personalizada, atendendo as necessidades especificas de cada instituição. 
     </header>
+<section class="flex flex-col gap-12">
+
+    <!-- LINKS -->
+    <div class="flex flex-col gap-5">
+
+        <h3 class="font-mono text-xs tracking-[0.3em] text-text-muted uppercase">
+            // endpoints
+        </h3>
+
+        <!-- Código Fonte -->
+        <a
+            href="#"
+            target="_blank"
+            class="group flex items-center justify-between px-6 py-4 border border-border rounded-md font-mono text-sm bg-surface transition-all duration-300 hover:border-text-primary hover:shadow-xl hover:-translate-y-1 active:scale-95"
+        >
+            <span class="flex items-center gap-2 text-text-primary">
+                <span class="opacity-50">git clone →</span>
+                repository
+            </span>
+            <span class="opacity-40 group-hover:opacity-100 transition">↗</span>
+        </a>
+
+        <!-- Live Demo -->
+        <a
+            href="#"
+            target="_blank"
+            class="group flex items-center justify-between px-6 py-4 bg-text-primary text-surface rounded-md font-mono text-sm transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 active:scale-95"
+        >
+            <span class="flex items-center gap-2">
+                <span class="opacity-60">execute →</span>
+                production_build
+            </span>
+            <span class="opacity-60 group-hover:opacity-100 transition">↗</span>
+        </a>
+
+    </div>
+
+    <!-- STATUS -->
+    <div class="flex flex-col gap-4">
+
+        <h3 class="font-mono text-xs tracking-[0.3em] text-text-muted uppercase">
+            // runtime
+        </h3>
+
+        <div class="bg-[#F0F0F0] border border-border rounded-md p-5 font-mono text-sm flex flex-col gap-2">
+
+            <div class="flex items-center gap-3">
+                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                <span class="text-text-primary">STATUS: BUILD_STABLE</span>
+            </div>
+
+            <div class="text-text-muted text-xs">
+                VERSION: v1.0.3 | ENV: PROD
+            </div>
+
+            <div class="text-text-muted text-xs">
+                LAST_DEPLOY: 2026-02-11 22:48 UTC
+            </div>
+
+            <!-- Cursor piscando -->
+            <div class="flex items-center gap-1 text-text-primary mt-2">
+                <span>$ system.ready</span>
+                <span class="w-2 h-4 bg-text-primary animate-pulse"></span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
     {% for post in articles %}
 
