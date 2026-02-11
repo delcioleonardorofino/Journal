@@ -1,5 +1,5 @@
 from flask import Flask, render_template, abort, request
-from .utils import load_posts, all_posts
+from .utils import load_posts, all_posts, load_articles, all_articles
 
 app = Flask(__name__)
 
@@ -33,3 +33,20 @@ def get_post(id):
         return render_template('partial_post.html', posts=posts, post = post)
     
     return render_template('post.html', posts=posts, post=post)
+
+@app.get('/multitenant')
+def multitenant():
+    return render_template('multitennant.html', articles = all_articles)
+
+
+@app.get('/articles/<int:id>')
+def get_article(id):
+    
+    articles = all_articles
+    article = load_articles(id)
+
+    if article is None:
+        print('No article found!')
+        abort(404)
+
+    return render_template('article.html', posts=articles, post=article)
