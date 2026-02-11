@@ -46,14 +46,14 @@ A sensação de ver o terminal rodar é viciante, mas construir sem arquitetura 
 Decidí que o financeiro podia ser o último bloco a ser implementado (tudo que tem a ver com dinheiro deve ser feito com toda a serenidade e sem pressa).
 
  
-​* **Core Administrativo (O "Cérebro")**
+​**Core Administrativo (O "Cérebro")**
 
 _Gestão de Tenants:_ Cadastro de escolas, períodos letivos e turmas.
 
 _Controle de Acesso (RBAC):_ Diferenciar o que o Diretor, o Professor, o Aluno e o Encarregado de Educação podem ver.
 
 
-​* **Gestão Académica (O "Coração")**
+​**Gestão Académica (O "Coração")**
 
 _Matrículas e Entrâncias:_ Cadastro de alunos e alocação em turmas.
 
@@ -62,6 +62,6 @@ _Diário de Classe Digital:_ Registo de faltas e sumários.
 _Avaliações e Notas:_ Lançamento de notas e cálculo automático de médias.
 
 
-​* **Financeiro Essencial (A "Sobrevivência")**
+​**Financeiro Essencial (A "Sobrevivência")**
 
-*_Gestão de Propinas/Mensalidades:_ Emissão de faturas e controlo de pagamentos (quem pagou e quem deve).
+* _Gestão de Propinas/Mensalidades:_ Emissão de faturas e controlo de pagamentos (quem pagou e quem deve).
