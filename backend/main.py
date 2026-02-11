@@ -16,6 +16,9 @@ def get_posts():
     return render_template('posts.html', posts=all_posts)
 
 
+@app.get('/healthcheck')
+def keep_alive():
+    return 'Keeping server alive!'
 
 @app.get('/posts/<int:id>')
 def get_post(id):
