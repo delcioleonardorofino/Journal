@@ -45,20 +45,20 @@ A sensação de ver o terminal rodar é viciante, mas construir sem arquitetura 
 ​Para que o sistema seja funcional logo no "Dia 1", ele precisa cobrir o triângulo básico: Administração, Académico e Financeiro.  
 Decidí que o financeiro podia ser o último bloco a ser implementado (tudo que tem a ver com dinheiro deve ser feito com toda a serenidade e sem pressa). 
  
-​* _Core Administrativo (O "Cérebro")_
+​* **Core Administrativo (O "Cérebro")**
 
-*​Gestão de Tenants:* Cadastro de escolas, períodos letivos e turmas.
+_Gestão de Tenants:_ Cadastro de escolas, períodos letivos e turmas.
 
-*Controle de Acesso (RBAC):* Diferenciar o que o Diretor, o Professor, o Aluno e o Encarregado de Educação podem ver.
+_Controle de Acesso (RBAC):_ Diferenciar o que o Diretor, o Professor, o Aluno e o Encarregado de Educação podem ver.
 
 ​* **Gestão Académica (O "Coração")**
 
-*​Matrículas e Entrâncias:* Cadastro de alunos e alocação em turmas.
+_Matrículas e Entrâncias:_ Cadastro de alunos e alocação em turmas.
 
-*​Diário de Classe Digital:* Registo de faltas e sumários.
+_Diário de Classe Digital:_ Registo de faltas e sumários.
 
-*​Avaliações e Notas:* Lançamento de notas e cálculo automático de médias.
+_Avaliações e Notas:_ Lançamento de notas e cálculo automático de médias.
 
 ​* **Financeiro Essencial (A "Sobrevivência")**
 
-*​Gestão de Propinas/Mensalidades:* Emissão de faturas e controlo de pagamentos (quem pagou e quem deve).
+*_Gestão de Propinas/Mensalidades:_ Emissão de faturas e controlo de pagamentos (quem pagou e quem deve).
