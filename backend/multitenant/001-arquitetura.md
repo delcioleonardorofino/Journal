@@ -29,7 +29,7 @@ A sensação de ver o terminal rodar é viciante, mas construir sem arquitetura 
 
 ​Aqui está uma proposta de estruturação para o MVP, focada no equilíbrio entre utilidade real e viabilidade técnica.  
 
-###  Arquitetura Multi-Tenant
+## Arquitetura Multi-Tenant
 
 
 ​Antes das funcionalidades, precisamos decidir como os dados serão separados. Para um MVP escalável, encontrei a possibilidade de seguir por uma das duas abordagens:
@@ -39,7 +39,7 @@ A sensação de ver o terminal rodar é viciante, mas construir sem arquitetura 
 * **​Shared Database (Discriminator Column):** Todas as escolas na mesma tabela, diferenciadas por um `school_id`. É a forma mais rápida de validar o MVP e mais barata de hospedar.
 
 
-### ​Levantamento de Requisitos (MVP)
+## ​Levantamento de Requisitos (MVP)
 
 
 ​Para que o sistema seja funcional logo no "Dia 1", ele precisa cobrir o triângulo básico: Administração, Académico e Financeiro.  
