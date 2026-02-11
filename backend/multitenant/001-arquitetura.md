@@ -1,13 +1,13 @@
 ---
 id: 1
 title: Dia 1 | As motivacoes e a arquitetura
-date: 04 de Janeiro de 2026
-description: Espaço para documentar experiências, projetos e reflexões na engenharia e no desenvolvimento de software. Para aprender, errar, crescer e inspirar quem caminha junto.
+date: 11 de Fevereiro de 2026
+description: Veja a documentacao do processo de construncao de um sistema de gestao escolar multi-tenant.
 ---
 
 
 
-## Bem vindo ao meu jornal técnico
+## A ideia e o motivo
 
 Este não é um espaço de ideias rígidas, dogmas ou preceitos infalíveis. É um espaço de processo.  
 Este primeiro post não precisa falar sobre nada técnico ainda. 
