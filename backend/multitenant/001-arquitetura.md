@@ -42,7 +42,7 @@ A sensação de ver o terminal rodar é viciante, mas construir sem arquitetura 
 ## ​Levantamento de Requisitos (MVP)
 
 
-​Para que o sistema seja funcional logo no "Dia 1", ele precisa cobrir o triângulo básico: Administração, Académico e Financeiro.  
+​Para que o sistema seja funcional logo no "Dia 1", ele precisa cobrir o triângulo básico: `Administração, Académico e Financeiro`.  
 Decidí que o financeiro podia ser o último bloco a ser implementado (tudo que tem a ver com dinheiro deve ser feito com toda a serenidade e sem pressa).
 
  
