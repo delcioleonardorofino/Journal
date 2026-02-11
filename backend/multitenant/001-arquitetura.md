@@ -27,7 +27,7 @@ A sensação de ver o terminal rodar é viciante, mas construir sem arquitetura 
 ​Um Sistema de Gestão Escolar (SGE) Multi-Tenant é um desafio arquitetural fascinante porque exige um isolamento rigoroso de dados entre escolas (Tenants) enquanto partilham a mesma infraestrutura.
 
 
-​Aqui está uma proposta de estruturação para o MVP, focada no equilíbrio entre utilidade real e viabilidade técnica.
+​Aqui está uma proposta de estruturação para o MVP, focada no equilíbrio entre utilidade real e viabilidade técnica.  
 
 ### Arquitetura Multi-Tenant
 
