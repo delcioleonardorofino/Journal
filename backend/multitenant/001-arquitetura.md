@@ -2,22 +2,29 @@
 id: 1
 title: Dia 1 | As motivacoes e a arquitetura
 date: 11 de Fevereiro de 2026
-description: Veja a documentacao do processo de construncao de um sistema de gestao escolar multi-tenant.
+description: Qualquer bom sistema deve ser pensado e bem planejado desde o início. Por isso, na fase de desenvolvimento de uma ideia, o primeiro passo é arquitetar.
 ---
 
 
 
-## A ideia e o motivo
+## A ideia e o motivo 
 
-Este não é um espaço de ideias rígidas, dogmas ou preceitos infalíveis. É um espaço de processo.  
-Este primeiro post não precisa falar sobre nada técnico ainda. 
+Enquanto lia a mensagem de meu irmão me contando eufórico sobre o desempenho académico de meu sobrinho sensei no quão seria útil ter um sistema de gestão escolar.
+Inspirado nas utilidades dos sistemas de gestão universitária, porquê não expandir a ideia de digitalização do processo académico-administrativo para o sector do ensino fundamental.
 
-Ele responde a três perguntas, implicitamente: 
-> Quem sou eu? Por que estou escrevendo? Para onde estou indo?
+Ter as notas de nossos educandos para ver/consultar sempre que possível, de modo estruturado e seguindo uma lógica bem definida seria algo de extrema utilidade.
 
-Criei este journal para documentar minha trajectória, meus erros e talvez alguns acertos na jornada pelos trilhos da engenharia e do desenvolvimentode de software. Podia chamar de blog, mas eu gosto de fugir do clichê sempre que possível. Por isso chamo de `Journal/Diário`, mesmo que talvez eu não poste todo dia.
+>Por isso decidí construir um eu mesmo.
 
-Claro que se espera que um engenheiro saiba profundamente de tudo que faz, acerte nas suas escolhas e que no máximo o erro seja em não saber nomear seus engenhos.
+## Planejamento
+
+O planejamento é uma fase que deixa todo dev preguiçoso. Somos às vezes convecidos pelos nossos egos que a melhor e mais importante parte do desenvolvimento de software é na escrita do código. Cuspir linhas de código e sentir a nostalgia por ter decorado uma sintaxe inteira. Feliz ou infelizmente, a parte mais importante de tudo isso é arquitectar, traduzir o desejo abstrato em regras de negócio bem definidas, porque no final de tudo escrever código é mais ferramental do que objectivo.
+
+Tendemos a objectivar o código, nos esquecendo que é parte de uma vasta gama de ferramentas que se usam para atingir um produto que no fim não é código, mas um serviço ou uma infraestrutura.
+
+Minimum Viable Product (MVP)
+
+Para este projecto foi necessário fazer levantamento de requisitos, claro, aqueles ideiais, e os que devem integrar o MVP (Minimum Viable Product)
 
 **Mas eu me deparei com a verdade que me nenguei a aceitar por um tempo:**
 > _Não se sabe absolutamente nada até que se erre ao ponto de criar revolta pessoal_.
