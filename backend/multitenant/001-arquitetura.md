@@ -29,24 +29,36 @@ A sensação de ver o terminal rodar é viciante, mas construir sem arquitetura 
 
 ​Aqui está uma proposta de estruturação para o MVP, focada no equilíbrio entre utilidade real e viabilidade técnica.
 
-### ​1.Arquitetura Multi-Tenant
+### ​Arquitetura Multi-Tenant
 
 
 ​Antes das funcionalidades, precisamos decidir como os dados serão separados. Para um MVP escalável, encontrei a possibilidade de seguir por uma das duas abordagens:
+
 * ​**Database-per-tenant:** Cada escola tem o seu próprio banco de dados. Máxima segurança, mas maior custo de manutenção (Pior para uma só pessoa, praticamente inviável a longo prazo).
+
 * **​Shared Database (Discriminator Column):** Todas as escolas na mesma tabela, diferenciadas por um school_id. É a forma mais rápida de validar o MVP e mais barata de hospedar.
 
 
-### ​2. Levantamento de Requisitos (MVP)
+### ​Levantamento de Requisitos (MVP)
 
 
-​Para que o sistema seja funcional logo no "Dia 1", ele precisa cobrir o triângulo básico: Administração, Académico e Financeiro. Decidí que o financeiro podia ser o último bloco a ser implementado (tudo que tem a ver com dinheiro deve ser feito com toda a serenidade e sem pressa).  
-​A. Core Administrativo (O "Cérebro")
-​Gestão de Tenants: Cadastro de escolas, períodos letivos e turmas.
-​Controle de Acesso (RBAC): Diferenciar o que o Diretor, o Professor, o Aluno e o Encarregado de Educação podem ver.
-​B. Gestão Académica (O "Coração")
-​Matrículas e Entrâncias: Cadastro de alunos e alocação em turmas.
-​Diário de Classe Digital: Registo de faltas e sumários.
-​Avaliações e Notas: Lançamento de notas e cálculo automático de médias.
-​C. Financeiro Essencial (A "Sobrevivência")
-​Gestão de Propinas/Mensalidades: Emissão de faturas e controlo de pagamentos (quem pagou e quem deve).
+​Para que o sistema seja funcional logo no "Dia 1", ele precisa cobrir o triângulo básico: Administração, Académico e Financeiro.  
+Decidí que o financeiro podia ser o último bloco a ser implementado (tudo que tem a ver com dinheiro deve ser feito com toda a serenidade e sem pressa). 
+ 
+​* **Core Administrativo (O "Cérebro")**
+
+*​Gestão de Tenants:* Cadastro de escolas, períodos letivos e turmas.
+
+*Controle de Acesso (RBAC):* Diferenciar o que o Diretor, o Professor, o Aluno e o Encarregado de Educação podem ver.
+
+​* **Gestão Académica (O "Coração")**
+
+*​Matrículas e Entrâncias:* Cadastro de alunos e alocação em turmas.
+
+*​Diário de Classe Digital:* Registo de faltas e sumários.
+
+*​Avaliações e Notas:* Lançamento de notas e cálculo automático de médias.
+
+​* **Financeiro Essencial (A "Sobrevivência")**
+
+*​Gestão de Propinas/Mensalidades:* Emissão de faturas e controlo de pagamentos (quem pagou e quem deve).
