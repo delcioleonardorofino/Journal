@@ -29,7 +29,7 @@ A sensação de ver o terminal rodar é viciante, mas construir sem arquitetura 
 
 ​Aqui está uma proposta de estruturação para o MVP, focada no equilíbrio entre utilidade real e viabilidade técnica.
 
-###Arquitetura Multi-Tenant
+### Arquitetura Multi-Tenant
 
 
 ​Antes das funcionalidades, precisamos decidir como os dados serão separados. Para um MVP escalável, encontrei a possibilidade de seguir por uma das duas abordagens:
@@ -45,7 +45,7 @@ A sensação de ver o terminal rodar é viciante, mas construir sem arquitetura 
 ​Para que o sistema seja funcional logo no "Dia 1", ele precisa cobrir o triângulo básico: Administração, Académico e Financeiro.  
 Decidí que o financeiro podia ser o último bloco a ser implementado (tudo que tem a ver com dinheiro deve ser feito com toda a serenidade e sem pressa). 
  
-​* **Core Administrativo (O "Cérebro")**
+​* _Core Administrativo (O "Cérebro")_
 
 *​Gestão de Tenants:* Cadastro de escolas, períodos letivos e turmas.
 
