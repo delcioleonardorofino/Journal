@@ -89,9 +89,15 @@
 
                 <div class="flex gap-4 text-xs md:text-base">
             
-            {%if request.endpoint == 'home' or request.endpoint == 'multitenant'%}
+            {%if request.endpoint == 'home'%}
                 <a href="#portfolio" class="cursor-pointer opacity-80 text-[13px] hover:opacity-100 hover:text-black transition duration-300 active:scale-95 active:text-text-muted">Portfolio</a>
 
+                <a href="{{url_for('get_posts')}}" class="cursor-pointer opacity-80 text-[13px]  hover:opacity-100 hover:text-black transition duration-300 active:scale-95 active:text-text-muted">Diario</a>
+
+                <a href="#" class="cursor-pointer opacity-80 text-[13px]  hover:opacity-100 hover:text-black transition duration-300 active:scale-95 active:text-text-muted">Sobre</a>
+            {%endif%}
+
+            {% if request.endpoint == 'multitenant'%}
                 <a href="{{url_for('get_posts')}}" class="cursor-pointer opacity-80 text-[13px]  hover:opacity-100 hover:text-black transition duration-300 active:scale-95 active:text-text-muted">Diario</a>
 
                 <a href="#" class="cursor-pointer opacity-80 text-[13px]  hover:opacity-100 hover:text-black transition duration-300 active:scale-95 active:text-text-muted">Sobre</a>
