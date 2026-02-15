@@ -1,6 +1,6 @@
 ---
 id: 1
-title: Dia 1 | As motivações e a arquitetura
+title: Dia 1 | Arquitetura do Sistema de Gestão Escolar
 date: 11 de Fevereiro de 2026
 description: Qualquer bom sistema deve ser pensado e bem planejado desde o início. Por isso, na fase de desenvolvimento de uma ideia, o primeiro passo é arquitetar.
 ---
