@@ -342,30 +342,30 @@ Professores enviam relatórios → Diretor de turma consolida.
 # 10. Rotas Essenciais do MVP
 
 ## Auth
-POST /auth/login  
-GET /auth/me  
+`POST /auth/login` 
+`GET /auth/me`  
 
 ## Schools
-POST /schools  
-GET /schools  
+`POST /schools`  
+`GET /schools`  
 
 ## Students
-POST /students  
-GET /students  
-GET /students/{id}  
-PUT /students/{id}  
+`POST /students` 
+`GET /students` 
+`GET /students/{id}`  
+`PUT /students/{id}` 
 
 ## Classes
-POST /classes  
-GET /classes  
+`POST /classes` 
+`GET /classes`  
 
 ## TeacherAssignment
-POST /teacher-assignments  
-GET /teacher-assignments  
+`POST /teacher-assignments`  
+`GET /teacher-assignments` 
 
 ## Grades
-POST /grades/bulk  
-GET /classes/{id}/grades  
+`POST /grades/bulk`  
+`GET /classes/{id}/grades`  
 
 ---
 
