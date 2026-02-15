@@ -6,45 +6,199 @@ description: Veja a documentacao do processo de construncao de um sistema de ges
 ---
 
 
+## 1. Introdução
 
-## A ideia e o motivo
+Quando decidi construir este Sistema de Gestão Escolar, percebi rapidamente que segurança não poderia ser um detalhe técnico. Eu não estou lidando apenas com tabelas e registros. Estou lidando com:
 
-Este não é um espaço de ideias rígidas, dogmas ou preceitos infalíveis. É um espaço de processo.  
-Este primeiro post não precisa falar sobre nada técnico ainda. 
+- Dados pessoais de estudantes  
+- Notas escolares  
+- Relatórios pedagógicos  
+- Informações sensíveis (órfãos, deficiências, situação familiar)  
+- Estrutura institucional da escola  
 
-Ele responde a três perguntas, implicitamente: 
-> Quem sou eu? Por que estou escrevendo? Para onde estou indo?
+Por isso, tratei a segurança como um dos pilares centrais do sistema. Minha arquitetura de segurança é baseada em:
 
-Criei este journal para documentar minha trajectória, meus erros e talvez alguns acertos na jornada pelos trilhos da engenharia e do desenvolvimentode de software. Podia chamar de blog, mas eu gosto de fugir do clichê sempre que possível. Por isso chamo de `Journal/Diário`, mesmo que talvez eu não poste todo dia.
+- FastAPI como framework backend  
+- JWT para autenticação stateless  
+- Hash seguro de senhas  
+- Isolamento multitenant rigoroso  
 
-Claro que se espera que um engenheiro saiba profundamente de tudo que faz, acerte nas suas escolhas e que no máximo o erro seja em não saber nomear seus engenhos.
+---
 
-**Mas eu me deparei com a verdade que me nenguei a aceitar por um tempo:**
-> _Não se sabe absolutamente nada até que se erre ao ponto de criar revolta pessoal_.
+# 2. Escolha da Stack de Segurança
 
-Ao longo do tempo fui aprendendo e dominando várias tecnologias, mas me esquecendo mais rápido do que aprendendo. Não por falta de interesse, mas por aprender sem registrar. A prática constante é sim um caminho para a eternização do conhecimento, mas ainda acho que a exteriorização constante, mesmo que puramente teórica sobre qualquer assunto, é também ajudadora.
+## 2.1 FastAPI
 
-Este journal nasce para resolver isso.
+Escolhi o FastAPI porque ele me oferece:
 
-*Aqui vou registrar:*
+- Alto desempenho  
+- Tipagem forte  
+- Validação automática com Pydantic  
+- Sistema de dependências elegante  
+- Organização clara da autenticação  
 
-* Estudos, 
-* Experimentos.
-* Projectos pessoais
-* Erros que me ensinaram mais do que acertos
-* Ideias que eu não sei se vão dar certo
+A injeção de dependências do FastAPI me permite centralizar a lógica de autenticação e autorização, evitando código repetido e vulnerável espalhado pelo projeto.
 
-Talvez eu documente que esteja construíndo algo grandioso. Tempo depois, antes de terminar tal obra prima, desista e começe outros empreendimentos. Espero que entendas que talvez daquele projecto eu tenha aprendido tudo que podia e que outra coisa me deixou curioso. E como sabido, gato que sou, curioso não podia deixar de ser.
+---
 
-Não escrevo como especialista, mas como alguém em **construção**.
+## 2.2 Hash de Senha
 
-A engenharia, seja ela de qualquer tipo, raramente é linear. Um dia você entende sobre filtros analógicos, no outro está sendo massacrado o intelecto por um problema que se resume em abrir um diretório no pc usando o terminal de comandos.
-Tudo bem passar por esse processo, e documentá-lo é a melhor forma de dar sentido à tudo isso.
+Eu nunca armazeno senhas em texto puro. Para isso uso `passlib` com bcrypt:
 
-Este espaço também é um convite: se você está começando, avançando ou recomeçando, talvez encontre aqui algo familiar.
-*E se não encontrar respostas, talvez encontre boas perguntas.*
-Este journal é, antes de tudo, um registro honesto da minha trilha.
-Se alguém caminhar junto, melhor ainda.
+```python
+from passlib.context import CryptContext
 
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-**Bem-vindo!**
+def hash_password(plain_password: str) -> str:
+    return pwd_context.hash(plain_password)
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    return pwd_context.verify(plain_password, hashed_password)
+
+# Exemplo de uso
+senha = "MeuSegredo123"
+hash_da_senha = hash_password(senha)
+assert verify_password("MeuSegredo123", hash_da_senha)  # True
+```
+
+> O hash garante que mesmo que o banco seja vazado, ninguém consegue descobrir a senha original.
+
+---
+
+## 2.3 JWT para Autenticação
+
+Quando o usuário faz login, eu gero um **JWT** que contém informações essenciais: `user_id`, `role` e `school_id`.
+
+```python
+from datetime import datetime, timedelta
+from jose import jwt
+
+SECRET_KEY = "uma_chave_muito_segura_aleatoria"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 60
+
+def create_access_token(data: dict) -> str:
+    to_encode = data.copy()
+    expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    to_encode.update({"exp": expire})
+    token = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    return token
+
+payload = {"user_id": 12, "role": "teacher", "school_id": 3}
+token = create_access_token(payload)
+print(token)
+```
+
+> Esse token será enviado ao frontend e usado em todas as requisições protegidas.
+
+---
+
+## 2.4 Decodificação e Validação do JWT
+
+No backend, uso dependências do FastAPI para decodificar e validar o token:
+
+```python
+from fastapi import Depends, HTTPException, status
+from jose import JWTError, jwt
+from fastapi.security import OAuth2PasswordBearer
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
+
+def get_current_user(token: str = Depends(oauth2_scheme)):
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        user_id: int = payload.get("user_id")
+        role: str = payload.get("role")
+        school_id: int = payload.get("school_id")
+        if user_id is None or role is None or school_id is None:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Token inválido"
+            )
+        return {"user_id": user_id, "role": role, "school_id": school_id}
+    except JWTError:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token inválido ou expirado"
+        )
+```
+
+> Qualquer rota que precise de autenticação apenas injeta `current_user`. O filtro `school_id` garante que o usuário só acesse dados da sua escola.
+
+---
+
+## 2.5 Criação de Usuários com Hash
+
+Quando crio usuários, aplico hash à senha antes de salvar:
+
+```python
+from pydantic import BaseModel
+
+class UserCreate(BaseModel):
+    username: str
+    password: str
+    role: str
+
+def create_user(user_data: UserCreate):
+    hashed_pw = hash_password(user_data.password)
+    user_record = {
+        "username": user_data.username,
+        "hashed_password": hashed_pw,
+        "role": user_data.role
+    }
+    # db.save(user_record)
+    return user_record
+
+novo_user = UserCreate(username="joao.professor", password="12345", role="teacher")
+user_criado = create_user(novo_user)
+print(user_criado)
+```
+
+---
+
+## 2.6 Controle de Acesso por Papel (RBAC) e Tenant
+
+```python
+from fastapi import Depends, HTTPException
+
+def require_teacher(current_user: dict = Depends(get_current_user)):
+    if current_user["role"] != "teacher":
+        raise HTTPException(status_code=403, detail="Acesso negado")
+    return current_user
+
+@app.get("/minhas-turmas")
+def minhas_turmas(current_user: dict = Depends(require_teacher)):
+    school_id = current_user["school_id"]
+    # turmas = db.query(Turma).filter(Turma.school_id == school_id)
+    return {"school_id": school_id, "message": "Você só acessa suas turmas"}
+```
+
+> Assim, qualquer tentativa de acessar dados de outra escola é bloqueada. Mesmo IDs duplicados entre escolas não permitem vazamento.
+
+---
+
+# 3. Fluxo Completo
+
+1. Usuário envia login  
+2. Backend verifica hash da senha  
+3. Backend gera JWT com `user_id`, `role` e `school_id`  
+4. Frontend envia token nas requisições  
+5. Backend valida token, role e school_id antes de devolver dados  
+6. Qualquer tentativa de violação é barrada  
+
+---
+
+# 4. Conclusão
+
+Implementar segurança no SGE envolveu combinar:
+
+- **Hash seguro** para senhas  
+- **JWT** para autenticação stateless  
+- **Controle de papel (RBAC)**  
+- **Isolamento multitenant (school_id)**  
+
+Cada escolha foi feita pensando em proteger os dados sensíveis de estudantes e escolas, mantendo a arquitetura escalável e simples para o MVP.  
+
+A segurança é uma camada ética, não apenas técnica — estou protegendo pessoas, não apenas dados.
+
