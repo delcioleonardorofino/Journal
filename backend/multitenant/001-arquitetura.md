@@ -9,7 +9,7 @@ description: Qualquer bom sistema deve ser pensado e bem planejado desde o iníc
 
 ## 1. Visão Geral do Projeto
 
-O Sistema de Gestão Escolar (SGE) foi concebido para digitalizar e estruturar os processos administrativos e pedagógicos de escolas públicas/estatais, respeitando a realidade operacional atual — fortemente baseada em papel — e permitindo uma transição gradual e sustentável para o digital.
+O Sistema de Gestão Escolar (SGE) foi concebido para digitalizar e estruturar os processos administrativos e pedagógicos de escolas públicas/estatais, respeitando a realidade operacional atual, fortemente baseada em papel, e permitindo uma transição gradual e sustentável para o digital.
 
 O foco inicial é o MVP (Minimum Viable Product), cujo objetivo é:
 
