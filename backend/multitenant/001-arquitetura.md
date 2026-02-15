@@ -6,62 +6,432 @@ description: Qualquer bom sistema deve ser pensado e bem planejado desde o iníc
 ---
 
 
+## Índice de Navegação
 
-## A ideia e o motivo 
+1. [Visão Geral do Projeto](#1-visão-geral-do-projeto)  
+2. [Contexto do Problema e Realidade Institucional](#2-contexto-do-problema-e-realidade-institucional)  
+3. [Estratégia Técnica e Decisões Estruturais](#3-estratégia-técnica-e-decisões-estruturais)  
+4. [Arquitetura Geral do Sistema](#4-arquitetura-geral-do-sistema)  
+5. [Multitenancy: Conceito, Tipos e Modelo Escolhido](#5-multitenancy-conceito-tipos-e-modelo-escolhido)  
+6. [Autenticação, Autorização e Segurança](#6-autenticação-autorização-e-segurança)  
+7. [Perfis de Usuário e Responsabilidades](#7-perfis-de-usuário-e-responsabilidades)  
+8. [Modelagem de Dados e Estrutura Relacional](#8-modelagem-de-dados-e-estrutura-relacional)  
+9. [Fluxos Operacionais Principais](#9-fluxos-operacionais-principais)  
+10. [Rotas Essenciais do MVP](#10-rotas-essenciais-do-mvp)  
+11. [Levantamento Estatístico Escolar (Fase 03 de 03)](#11-levantamento-estatístico-escolar-fase-03-de-03)  
+12. [Dificuldades Técnicas e Desafios Arquiteturais](#12-dificuldades-técnicas-e-desafios-arquiteturais)  
+13. [Justificativas Arquiteturais e Estratégicas](#13-justificativas-arquiteturais-e-estratégicas)  
+14. [Conclusão e Direção Futura](#14-conclusão-e-direção-futura)  
 
-Enquanto lia a mensagem de meu irmão me contando eufórico sobre o desempenho académico de meu sobrinho, pensei no quão seria útil ter um sistema de gestão escolar.
-Inspirado nas utilidades dos sistemas de gestão universitária, porquê não expandir a ideia de digitalização do processo académico-administrativo para o sector do ensino fundamental?
+---
 
-Ter as notas de nossos educandos para ver/consultar sempre que possível, de modo estruturado e seguindo uma lógica bem definida seria algo de extrema utilidade.
+## 1. Visão Geral do Projeto
 
->Por isso decidí construir um eu mesmo.
+O Sistema de Gestão Escolar (SGE) foi concebido para digitalizar e estruturar os processos administrativos e pedagógicos de escolas públicas/estatais, respeitando a realidade operacional atual — fortemente baseada em papel — e permitindo uma transição gradual e sustentável para o digital.
 
-## Planejamento
+O foco inicial é o MVP (Minimum Viable Product), cujo objetivo é:
 
-O planejamento é uma fase que deixa todo dev preguiçoso. Somos às vezes convecidos pelos nossos egos que a melhor e mais importante parte do desenvolvimento de software é na escrita do código. Cuspir linhas de código e sentir a nostalgia por ter decorado uma sintaxe inteira. Feliz ou infelizmente, a parte mais importante de tudo isso é arquitectar, traduzir o desejo abstrato em regras de negócio bem definidas, porque no final de tudo escrever código é mais ferramental do que objectivo.
+- Gerir estudantes, professores e turmas  
+- Controlar o processo de matrícula  
+- Permitir lançamento e publicação de notas por disciplina  
+- Gerar relatórios por turma  
+- Implementar levantamento estatístico escolar  
+- Garantir autenticação e autorização por perfil  
+- Permitir múltiplas escolas no mesmo sistema (arquitetura multitenant)  
 
->Tendemos a objectivar o código, nos esquecendo que é parte de uma vasta gama de ferramentas que se usam para atingir um produto que no fim não é código, mas um serviço ou uma infraestrutura.
+Este sistema não é apenas um CRUD. Ele é uma base institucional digital.
 
-A sensação de ver o terminal rodar é viciante, mas construir sem arquitetura é como levantar um prédio sem planta: na primeira alteração estrutural, tudo desaba.  
+---
 
-​Um Sistema de Gestão Escolar (SGE) Multi-Tenant é um desafio arquitetural fascinante porque exige um isolamento rigoroso de dados entre escolas (Tenants) enquanto partilham a mesma infraestrutura.
+# 2. Contexto do Problema e Realidade Institucional
 
+## 2.1 Processo Atual Baseado em Papel
 
-​Aqui está uma proposta de estruturação para o MVP, focada no equilíbrio entre utilidade real e viabilidade técnica.  
+Fluxo típico de matrícula:
 
-## Arquitetura Multi-Tenant
+1. Estudante compra processo físico  
+2. Preenche formulário manualmente  
+3. Insere documentos no processo  
+4. Entrega na secretaria  
+5. Secretaria registra nome em livro  
+6. Arquivamento físico  
 
+Esse modelo funciona há anos. Existe forte inércia institucional.
 
-​Antes das funcionalidades, precisamos decidir como os dados serão separados. Para um MVP escalável, encontrei a possibilidade de seguir por uma das duas abordagens:
+Portanto, o sistema não pode romper abruptamente com o fluxo atual. Ele deve:
 
-* ​**Database-per-tenant:** Cada escola tem o seu próprio banco de dados. Máxima segurança, mas maior custo de manutenção (Pior para uma só pessoa, praticamente inviável a longo prazo).
+- Digitalizar progressivamente  
+- Reduzir redundância  
+- Melhorar organização  
+- Manter compatibilidade com processos existentes  
 
-* **​Shared Database (Discriminator Column):** Todas as escolas na mesma tabela, diferenciadas por um `school_id`. É a forma mais rápida de validar o MVP e mais barata de hospedar.
+---
 
+# 3. Estratégia Técnica e Decisões Estruturais
 
-## ​Levantamento de Requisitos (MVP)
+## 3.1 Sistema Online vs Offline
 
+Foi escolhida arquitetura **online (web-based)**.
 
-​Para que o sistema seja funcional logo no "Dia 1", ele precisa cobrir o triângulo básico: `Administração, Académico e Financeiro`.  
-Decidí que o financeiro podia ser o último bloco a ser implementado (tudo que tem a ver com dinheiro deve ser feito com toda a serenidade e sem pressa).
+### Motivos:
 
- 
-​**Core Administrativo (O "Cérebro")**
+- Centralização de dados  
+- Suporte a múltiplas escolas  
+- Atualizações automáticas  
+- Backup centralizado  
+- Escalabilidade  
+- Menor risco de inconsistência  
 
-_Gestão de Tenants:_ Cadastro de escolas, períodos letivos e turmas.
+Sistema offline exigiria:
 
-_Controle de Acesso (RBAC):_ Diferenciar o que o Diretor, o Professor, o Aluno e o Encarregado de Educação podem ver.
+- Instalação manual  
+- Sincronização complexa  
+- Alto risco de fragmentação de dados  
 
+Conclusão: Online é estruturalmente mais sustentável.
 
-​**Gestão Académica (O "Coração")**
+---
 
-_Matrículas e Entrâncias:_ Cadastro de alunos e alocação em turmas.
+# 4. Arquitetura Geral do Sistema
 
-_Diário de Classe Digital:_ Registo de faltas e sumários.
+Arquitetura em camadas:
 
-_Avaliações e Notas:_ Lançamento de notas e cálculo automático de médias.
+Frontend (Web App)  
+↓  
+API Backend (REST)  
+↓  
+Base de Dados Relacional  
 
+## Responsabilidades do Backend:
 
-​**Financeiro Essencial (A "Sobrevivência")**
+- Autenticação  
+- Autorização  
+- Regras de negócio  
+- Validação  
+- Segurança  
+- Isolamento entre escolas  
+- Controle de permissões  
 
-* _Gestão de Propinas/Mensalidades:_ Emissão de faturas e controlo de pagamentos (quem pagou e quem deve).
+O frontend apenas consome a API. Toda regra crítica está no backend.
+
+---
+
+# 5. Multitenancy: Conceito, Tipos e Modelo Escolhido
+
+## 5.1 O que é Multitenancy?
+
+Multitenant é uma arquitetura onde um único sistema atende múltiplas organizações independentes (tenants).
+
+No SGE:
+
+- Cada escola é um tenant.  
+- Todas utilizam o mesmo sistema.  
+- Nenhuma pode visualizar dados de outra.  
+
+---
+
+## 5.2 Tipos de Multitenancy
+
+### 1️⃣ Database por Tenant
+Cada escola possui sua própria base de dados.
+
+Vantagens:
+- Isolamento total  
+- Alta segurança  
+
+Desvantagens:
+- Alto custo  
+- Complexidade operacional  
+- Difícil escalar  
+
+---
+
+### 2️⃣ Schema por Tenant
+Uma única base, múltiplos schemas.
+
+Vantagens:
+- Bom isolamento  
+- Organização clara  
+
+Desvantagens:
+- Migrações mais complexas  
+- Gestão técnica mais difícil  
+
+---
+
+### 3️⃣ Tabelas Compartilhadas com `school_id` (Modelo Escolhido)
+
+Uma única base.
+Tabelas compartilhadas.
+Cada registro possui um campo `school_id`.
+
+Exemplo:
+
+students:
+- id  
+- name  
+- birth_date  
+- school_id  
+
+Todas as queries filtram por `school_id`.
+
+### Motivos da escolha:
+
+- Simplicidade  
+- Ideal para MVP  
+- Baixo custo  
+- Escalável  
+- Fácil manutenção  
+
+Requer disciplina rigorosa no backend para sempre filtrar por `school_id`.
+
+---
+
+# 6. Autenticação, Autorização e Segurança
+
+## 6.1 Fluxo de Login
+
+1. Usuário envia credenciais  
+2. Backend valida  
+3. Backend gera token JWT  
+4. Token contém payload:
+
+```json
+{
+  "user_id": 12,
+  "role": "teacher",
+  "school_id": 3
+}
+```
+
+---
+
+## 6.2 Uso do Token
+
+Frontend envia:
+
+`Authorization: Bearer <token>`
+
+Backend:
+
+- Decodifica token  
+- Extrai payload  
+- Usa school_id para filtrar dados  
+- Usa role para autorizar ações  
+
+---
+
+## 6.3 Isolamento Entre Escolas
+
+Mesmo que dois estudantes tenham o mesmo código:
+
+- O token contém school_id  
+- Toda query é filtrada por school_id  
+- Não há acesso cruzado  
+
+`Identidade efetiva = user_id + school_id.`
+
+---
+
+# 7. Perfis de Usuário e Responsabilidades
+
+## 7.1 Admin do Sistema
+- Cria escolas  
+- Cria usuários da secretaria  
+- Supervisiona estrutura  
+
+## 7.2 Secretaria
+- Registra estudantes  
+- Atualiza dados  
+- Cria turmas  
+- Matricula estudantes  
+- Registra professores  
+
+## 7.3 Professor
+- Visualiza turmas atribuídas  
+- Lança notas por disciplina  
+- Envia relatórios  
+
+## 7.4 Diretor de Turma
+- É um professor com responsabilidade adicional  
+- Gere uma turma específica  
+- Consolida relatórios  
+- Acompanha situação global da turma  
+
+## 7.5 Estudante
+- Consulta notas  
+- Consulta relatórios  
+- Atualiza dados básicos (quando permitido)  
+
+---
+
+# 8. Modelagem de Dados e Estrutura Relacional
+
+## Entidades Principais
+
+School  
+User  
+Student  
+Teacher  
+Class  
+Subject  
+TeacherAssignment  
+Enrollment  
+Grade  
+Report  
+
+---
+
+## TeacherAssignment
+
+Resolve o problema de relação entre professor, disciplina e turma.
+
+Conecta:
+
+- Teacher  
+- Class  
+- Subject  
+- School  
+
+Permite saber:
+
+Quem ensina o quê, em qual turma.
+
+---
+
+## Grade
+
+Contém:
+
+- student_id  
+- subject_id  
+- class_id  
+- term  
+- score  
+- school_id  
+
+Permite lançamento em lote (bulk).
+
+---
+
+# 9. Fluxos Operacionais Principais
+
+## 9.1 Matrícula
+
+Secretaria cria estudante → associa à turma → gera enrollment.
+
+## 9.2 Atribuição de Professor
+
+Admin ou secretaria cria TeacherAssignment.
+
+## 9.3 Lançamento de Notas
+
+Professor:
+1. Seleciona turma  
+2. Seleciona disciplina  
+3. Sistema valida atribuição  
+4. Envia notas em lote  
+5. Backend salva  
+
+## 9.4 Relatórios
+
+Professores enviam relatórios → Diretor de turma consolida.
+
+---
+
+# 10. Rotas Essenciais do MVP
+
+## Auth
+POST /auth/login  
+GET /auth/me  
+
+## Schools
+POST /schools  
+GET /schools  
+
+## Students
+POST /students  
+GET /students  
+GET /students/{id}  
+PUT /students/{id}  
+
+## Classes
+POST /classes  
+GET /classes  
+
+## TeacherAssignment
+POST /teacher-assignments  
+GET /teacher-assignments  
+
+## Grades
+POST /grades/bulk  
+GET /classes/{id}/grades  
+
+---
+
+# 11. Levantamento Estatístico Escolar (Fase 03 de 03)
+
+Antes das avaliações:
+
+- Distribuição sexual  
+- Distribuição etária  
+- Órfãos  
+- Deficiências  
+- Situação familiar  
+
+Funcionalidade essencial:
+
+Atualização em massa (bulk update).
+
+Exemplo:
+
+Selecionar múltiplos estudantes → marcar todos como "deficiência auditiva".
+
+Requer:
+
+- Endpoint de atualização em lote  
+- Interface com multi-select  
+
+---
+
+# 12. Dificuldades Técnicas e Desafios Arquiteturais
+
+- Modelagem correta das relações  
+- Controle fino de permissões  
+- Garantir isolamento multitenant  
+- Evitar excesso de rotas  
+- Manter simplicidade no MVP  
+- Lidar com resistência institucional  
+- Gerenciar complexidade crescente  
+
+A sensação de sobrecarga é normal. O sistema tem múltiplas camadas de responsabilidade.
+
+---
+
+# 13. Justificativas Arquiteturais e Estratégicas
+
+As decisões foram baseadas em:
+
+- Simplicidade inicial  
+- Escalabilidade futura  
+- Segurança  
+- Baixo custo operacional  
+- Adoção gradual  
+- Estrutura preparada para expansão  
+
+O foco foi construir uma base sólida antes de adicionar complexidade.
+
+---
+
+# 14. Conclusão e Direção Futura
+
+O SGE é:
+
+- Multitenant  
+- Baseado em papéis  
+- Seguro via JWT  
+- Estruturado por escola  
+- Preparado para relatórios  
+- Preparado para estatística  
+- Preparado para expansão  
+
