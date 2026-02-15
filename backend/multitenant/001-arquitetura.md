@@ -6,24 +6,6 @@ description: Qualquer bom sistema deve ser pensado e bem planejado desde o iníc
 ---
 
 
-## Índice de Navegação
-
-1. [Visão Geral do Projeto](#1-visão-geral-do-projeto)  
-2. [Contexto do Problema e Realidade Institucional](#2-contexto-do-problema-e-realidade-institucional)  
-3. [Estratégia Técnica e Decisões Estruturais](#3-estratégia-técnica-e-decisões-estruturais)  
-4. [Arquitetura Geral do Sistema](#4-arquitetura-geral-do-sistema)  
-5. [Multitenancy: Conceito, Tipos e Modelo Escolhido](#5-multitenancy-conceito-tipos-e-modelo-escolhido)  
-6. [Autenticação, Autorização e Segurança](#6-autenticação-autorização-e-segurança)  
-7. [Perfis de Usuário e Responsabilidades](#7-perfis-de-usuário-e-responsabilidades)  
-8. [Modelagem de Dados e Estrutura Relacional](#8-modelagem-de-dados-e-estrutura-relacional)  
-9. [Fluxos Operacionais Principais](#9-fluxos-operacionais-principais)  
-10. [Rotas Essenciais do MVP](#10-rotas-essenciais-do-mvp)  
-11. [Levantamento Estatístico Escolar (Fase 03 de 03)](#11-levantamento-estatístico-escolar-fase-03-de-03)  
-12. [Dificuldades Técnicas e Desafios Arquiteturais](#12-dificuldades-técnicas-e-desafios-arquiteturais)  
-13. [Justificativas Arquiteturais e Estratégicas](#13-justificativas-arquiteturais-e-estratégicas)  
-14. [Conclusão e Direção Futura](#14-conclusão-e-direção-futura)  
-
----
 
 ## 1. Visão Geral do Projeto
 
