@@ -1,0 +1,168 @@
+{%extends 'base.html'%}
+
+{%block main%}
+
+<main class="
+            max-w-container
+            mx-auto
+            md:px-18 py-6
+            md:pt-section
+            flex
+            flex-col
+            gap-6
+            md:gap-[32px]"
+            id="container">
+            
+
+    <section class=" max-w-container px-6 py-12 flex flex-col gap-8 md:gap-14 content">
+
+    <header class="flex flex-col gap-4">
+        <div class="flex flex-row gap-2 justify-between">
+            <div class="flex flex-row gap-2 max-w-[200px] justify-center align-center">
+                <a href="/">
+                    <img
+                        src="{{ url_for('static', filename='assets/132472.png') }}"
+                        class="w-8 h-8 md:w-12 md:h-12
+                        rounded-full object-cover object-top cursor-pointer shadow-md
+                        transition-all duration-300
+                        hover:scale-105
+                        hover:shadow-blue-500/40"
+                    />
+                </a>
+               
+                <a href="/">
+                    <div class="flex flex-col gap-0 justify-center align-center">
+                        <p class="font-body font-bold text-xs md:text-sm text-text-primary name">D.L. Rofino.</p>
+                        <p class="font-body text-xs md:text-sm text-text-muted role">Engenheiro</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="flex flex-col justify-center align-center">
+                <span class="font-mono text-xs md:text-sm text-text-muted">
+                {{ post.date|safe }}
+                </span>
+            </div> 
+        </div>
+        
+        <h1 class="font-display font-bold mt-2 text-2xl md:mt-6 md:text-5xl text-text-primary">
+            Sistema de Gestão de Clientes
+        </h1>
+
+        <div class="flex flex-col mb-2 gap-2 text-text-muted text-base md:text-lg">
+            <span class="font-mono text-sm tracking-tight">Desenvolvimento de interface GUI com Python e Persistência via SQLAlchemy</span>
+        </div>
+
+        <section class="flex flex-wrap gap-2">
+            <span class="bg-[#F0F0F0] text-xs font-mono px-2 py-1 rounded-sm">#Python</span>
+            <span class="bg-[#F0F0F0] text-xs font-mono px-2 py-1 rounded-sm">#SQLAlchemy</span>
+            <span class="bg-[#F0F0F0] text-xs font-mono px-2 py-1 rounded-sm">#Tkinter</span>
+            <span class="bg-[#F0F0F0] text-xs font-mono px-2 py-1 rounded-sm">#SQLite</span>
+        </section>
+    </header>
+
+    {%if post.image%}
+    <section>
+            <img src="{{ url_for('static', filename='assets/post-image.png') }}" alt="Imagem do post"
+                class="w-full rounded-md shadow-sm hover:shadow-lg transition">
+        </section>
+    {%endif%}
+
+    <section class="flex flex-col gap-4 font-body text-base text-text-muted post">
+        <hr class="mb-4">
+        
+        <p class="leading-relaxed">
+            Este é um sistema simples de gestão de clientes, desenvolvido com <strong>Python</strong>, 
+            <strong>Tkinter</strong> para a interface gráfica, e <strong>SQLAlchemy</strong> para a interação com o banco de dados. 
+            O objetivo deste sistema é armazenar e gerenciar informações sobre os clientes, como nome, número de telefone, plano, consumo e saldo.
+        </p>
+
+        <h2 class="font-display font-bold text-xl md:text-2xl text-text-primary mt-6">Funcionalidades</h2>
+        <ul class="list-disc pl-5 space-y-1">
+            <li>Cadastro de novos clientes.</li>
+            <li>Exibição de uma lista de clientes cadastrados.</li>
+            <li>Edição de informações de clientes existentes.</li>
+            <li>Exclusão de clientes.</li>
+            <li>Armazenamento em banco de dados SQLite.</li>
+            <li>Interface gráfica intuitiva e fácil de usar.</li>
+        </ul>
+
+        <h2 class="font-display font-bold text-xl md:text-2xl text-text-primary mt-6">Tecnologias</h2>
+        <p>A stack principal utilizada no desenvolvimento deste projeto inclui:</p>
+        <div class="flex flex-wrap gap-3 mt-2">
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm text-text-primary font-mono font-bold italic">Python 3.x</code>
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm text-text-primary font-mono font-bold italic">Tkinter</code>
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm text-text-primary font-mono font-bold italic">SQLAlchemy</code>
+            <code class="bg-gray-100 px-2 py-1 rounded text-sm text-text-primary font-mono font-bold italic">SQLite</code>
+        </div>
+
+        <h2 class="font-display font-bold text-xl md:text-2xl text-text-primary mt-6">Pré-requisitos</h2>
+        <p>Antes de começar, você precisará ter o Python 3.x e o pip instalados. Instale as dependências com:</p>
+        <div class="bg-gray-900 text-gray-100 p-4 rounded-md font-mono text-xs md:text-sm overflow-x-auto shadow-inner my-2">
+            pip install -r requirements.txt
+        </div>
+
+        <h2 class="font-display font-bold text-xl md:text-2xl text-text-primary mt-6">Como rodar o projeto</h2>
+        
+        <p class="font-bold text-text-primary">Passo 1: Clone o repositório</p>
+        <div class="bg-gray-900 text-gray-100 p-4 rounded-md font-mono text-xs md:text-sm overflow-x-auto my-1">
+            git clone https://github.com/seu-usuario/sist-trib.git<br>
+            cd sist-trib
+        </div>
+
+        <p class="font-bold text-text-primary">Passo 2: Criação do banco de dados</p>
+        <div class="bg-gray-900 text-gray-100 p-4 rounded-md font-mono text-xs md:text-sm overflow-x-auto my-1">
+            python db/create_db.py
+        </div>
+
+        <p class="font-bold text-text-primary">Passo 3: Executar o aplicativo</p>
+        <div class="bg-gray-900 text-gray-100 p-4 rounded-md font-mono text-xs md:text-sm overflow-x-auto my-1">
+            python main.py
+        </div>
+
+        <h2 class="font-display font-bold text-xl md:text-2xl text-text-primary mt-6">Estrutura do projeto</h2>
+        <pre class="bg-gray-50 border border-gray-200 p-4 rounded-md font-mono text-[10px] md:text-xs leading-tight overflow-x-auto text-text-muted">
+/Sist_trib
+├── /main.py          # Código principal que inicia o aplicativo
+├── /db/              # Arquivos relacionados ao banco de dados
+│   └── create_db.py  # Criação do banco de dados
+├── /models/          # Modelos de dados do SQLAlchemy
+│   └── client_model.py
+├── /cdr_utils/       # Utilitários para manipulação de dados CDR
+├── /gui/             # Código da interface gráfica (Tkinter)
+├── /services/        # Lógica de negócios
+├── .env              # Configuração do ambiente
+├── requirements.txt  # Dependências
+└── README.md         # Documentação</pre>
+
+        <h2 class="font-display font-bold text-xl md:text-2xl text-text-primary mt-6">Licença</h2>
+        <p class="italic text-sm">Este projeto está licenciado sob a <strong>MIT License</strong>.</p>
+    </section>
+
+
+    <section class="flex flex-col md:flex-row gap-4 mt-8">
+        {%if post.id==1%}
+            <a href="/multitenant" 
+            class="flex items-center justify-center text-text-muted font-mono text-sm px-6 py-3 rounded-md shadow-sm hover:shadow-lg transition">
+            ← Voltar
+            </a>
+        {%endif%}
+
+        {%if post.id>1%}
+            <a href="/articles/{{post.id-1}}" 
+            class="flex items-center justify-center text-text-muted font-mono text-sm px-6 py-3 rounded-md shadow-sm hover:shadow-lg transition">
+            ← Artigo anterior
+            </a>
+        {%endif%}
+
+        {%if post.id < posts|length%} 
+            <a href="/articles/{{post.id+1}}"
+            class="flex items-center justify-center text-text-muted font-mono text-sm px-6 py-3 rounded-md shadow-sm hover:shadow-lg transition">
+            Próximo Artigo →
+            </a>
+        {%endif%}
+    </section>
+
+    </section>
+</main>
+{%endblock%}
