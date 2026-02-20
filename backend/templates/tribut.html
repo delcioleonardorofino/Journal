@@ -40,7 +40,7 @@
             
             <div class="flex flex-col justify-center align-center">
                 <span class="font-mono text-xs md:text-sm text-text-muted">
-                {{ post.date|safe }}
+                    03 de Setembro de 2025
                 </span>
             </div> 
         </div>
@@ -50,7 +50,7 @@
         </h1>
 
         <div class="flex flex-col mb-2 gap-2 text-text-muted text-base md:text-lg">
-            <span class="font-mono text-sm tracking-tight">Desenvolvimento de interface GUI com Python e Persistência via SQLAlchemy</span>
+            <span class="font-mono text-sm tracking-tight">API de Tributação e Gestão de Consumo em Redes Móveis</span>
         </div>
 
         <section class="flex flex-wrap gap-2">
@@ -60,13 +60,6 @@
             <span class="bg-[#F0F0F0] text-xs font-mono px-2 py-1 rounded-sm">#SQLite</span>
         </section>
     </header>
-
-    {%if post.image%}
-    <section>
-            <img src="{{ url_for('static', filename='assets/post-image.png') }}" alt="Imagem do post"
-                class="w-full rounded-md shadow-sm hover:shadow-lg transition">
-        </section>
-    {%endif%}
 
     <section class="flex flex-col gap-4 font-body text-base text-text-muted post">
         <hr class="mb-4">
@@ -141,26 +134,10 @@
 
 
     <section class="flex flex-col md:flex-row gap-4 mt-8">
-        {%if post.id==1%}
-            <a href="/multitenant" 
-            class="flex items-center justify-center text-text-muted font-mono text-sm px-6 py-3 rounded-md shadow-sm hover:shadow-lg transition">
-            ← Voltar
-            </a>
-        {%endif%}
-
-        {%if post.id>1%}
-            <a href="/articles/{{post.id-1}}" 
-            class="flex items-center justify-center text-text-muted font-mono text-sm px-6 py-3 rounded-md shadow-sm hover:shadow-lg transition">
-            ← Artigo anterior
-            </a>
-        {%endif%}
-
-        {%if post.id < posts|length%} 
-            <a href="/articles/{{post.id+1}}"
-            class="flex items-center justify-center text-text-muted font-mono text-sm px-6 py-3 rounded-md shadow-sm hover:shadow-lg transition">
-            Próximo Artigo →
-            </a>
-        {%endif%}
+        <a href="/" 
+        class="flex items-center justify-center text-text-muted font-mono text-sm px-6 py-3 rounded-md shadow-sm border border-gray-200 hover:shadow-lg transition">
+        ← Voltar para a Home
+        </a>
     </section>
 
     </section>
