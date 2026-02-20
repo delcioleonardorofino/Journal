@@ -50,3 +50,8 @@ def get_article(id):
         abort(404)
 
     return render_template('article.html', posts=articles, post=article)
+
+@app.get('/tribut')
+def get_tribut_system():
+
+    return render_template('tribut.html')
