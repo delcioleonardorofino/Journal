@@ -93,6 +93,7 @@ Open your browser and navigate to http://127.0.0.1:5000.
 The tailwind.config.js is set up to scan Jinja templates for utility classes:
 JavaScript
 
+```javascript
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -109,6 +110,7 @@ module.exports = {
   },
   plugins: [],
 }
+```
 
 📄 License
 
