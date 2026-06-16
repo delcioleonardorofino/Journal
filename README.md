@@ -70,7 +70,7 @@ Watch Tailwind CSS changes (in a separate terminal):
 ```
 Open your browser and navigate to http://127.0.0.1:5000.
 📂 Project Structure
-
+Plain Text
 ├── app/
 │   ├── static/
 │   │   ├── css/
